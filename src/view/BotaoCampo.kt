@@ -1,15 +1,14 @@
 package view
 
-import util.STRING_VAZIA
 import model.Campo
 import model.CampoEvento
+import util.*
 import java.awt.Color
 import java.awt.Font
 import javax.swing.BorderFactory
 import javax.swing.JButton
 import javax.swing.SwingUtilities
 
-private val QUANTIDADE_VIZINHOS = 1
 private val COR_BG_NORMAL = Color(184, 184, 184)
 private val COR_BG_MARCACAO = Color(37, 128, 247)
 private val COR_BG_EXPLOSAO = Color(189, 66, 68)
@@ -21,7 +20,7 @@ class BotaoCampo(private val campo: Campo) : JButton() {
         font = font.deriveFont(Font.BOLD)
         background = COR_BG_NORMAL
         isOpaque = true
-        border = BorderFactory.createBevelBorder(0)
+        border = BorderFactory.createBevelBorder(NUMERO_ZERO)
         addMouseListener(MouseCliqueListener(campo, { it.abrir() }, { it.alterarMarcacao() }))
 
         campo.onEvento(this::aplicarEstilo)
@@ -44,7 +43,7 @@ class BotaoCampo(private val campo: Campo) : JButton() {
 
     private fun aplicarEstiloExplodido() {
         background = COR_BG_EXPLOSAO
-        text = "X"
+        text = STRING_ESTILO_EXPLODIDO
     }
 
     private fun aplicarEstiloAberto() {
@@ -67,7 +66,7 @@ class BotaoCampo(private val campo: Campo) : JButton() {
     private fun aplicarEstiloMarcado() {
         background = COR_BG_MARCACAO
         foreground = Color.BLACK
-        text = "M"
+        text = STRING_ESTILO_MARCADO
     }
 
     private fun aplicarEstiloPadrao() {
