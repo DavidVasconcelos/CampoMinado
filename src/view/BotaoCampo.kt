@@ -1,6 +1,6 @@
 package view
 
-import util.EMPTY_STRING
+import util.STRING_VAZIA
 import model.Campo
 import model.CampoEvento
 import java.awt.Color
@@ -9,6 +9,7 @@ import javax.swing.BorderFactory
 import javax.swing.JButton
 import javax.swing.SwingUtilities
 
+private val QUANTIDADE_VIZINHOS = 1
 private val COR_BG_NORMAL = Color(184, 184, 184)
 private val COR_BG_MARCACAO = Color(37, 128, 247)
 private val COR_BG_EXPLOSAO = Color(189, 66, 68)
@@ -58,8 +59,9 @@ class BotaoCampo(private val campo: Campo) : JButton() {
             else -> Color.PINK
         }
 
-        text =
-            campo.takeUnless { it.qtdeVizinhosMinados < 1 }?.let { it.qtdeVizinhosMinados.toString() } ?: EMPTY_STRING
+        text = campo.takeUnless {
+            it.qtdeVizinhosMinados < QUANTIDADE_VIZINHOS }?.let {
+            it.qtdeVizinhosMinados.toString() } ?: STRING_VAZIA
     }
 
     private fun aplicarEstiloMarcado() {
@@ -71,6 +73,6 @@ class BotaoCampo(private val campo: Campo) : JButton() {
     private fun aplicarEstiloPadrao() {
         background = COR_BG_NORMAL
         border = BorderFactory.createBevelBorder(0)
-        text = EMPTY_STRING
+        text = STRING_VAZIA
     }
 }
