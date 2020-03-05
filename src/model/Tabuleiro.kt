@@ -1,5 +1,6 @@
 package model
 
+import util.NUMERO_ZERO
 import java.util.*
 
 enum class TabuleiroEvento { VITORIA, DERROTA }
@@ -45,15 +46,13 @@ class Tabuleiro(val qtdeLinhas: Int, val qtdeColunas: Int, private val qtdeMinas
     }
 
     private fun sortearMinas() {
-        val gerador = Random()
 
-        var linhaSorteada = -1
-        var colunaSorteada = -1
-        var qtdeMinasAtual = 0
+        val gerador = Random()
+        var qtdeMinasAtual = NUMERO_ZERO
 
         while (qtdeMinasAtual < this.qtdeMinas) {
-            linhaSorteada = gerador.nextInt(qtdeLinhas)
-            colunaSorteada = gerador.nextInt(qtdeColunas)
+            val linhaSorteada = gerador.nextInt(qtdeLinhas)
+            val colunaSorteada = gerador.nextInt(qtdeColunas)
 
             val campoSorteado = campos[linhaSorteada][colunaSorteada]
             if (campoSorteado.seguro) {
