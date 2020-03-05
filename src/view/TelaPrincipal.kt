@@ -1,6 +1,6 @@
 package view
 
-import Util.*
+import util.*
 import model.Tabuleiro
 import model.TabuleiroEvento
 import javax.swing.JFrame

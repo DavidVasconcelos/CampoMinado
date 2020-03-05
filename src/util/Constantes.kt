@@ -1,4 +1,4 @@
-package Util
+package util
 
 const val EMPTY_STRING = ""
 const val TITLE = "Campo Minado"

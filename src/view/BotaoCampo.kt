@@ -1,6 +1,6 @@
 package view
 
-import Util.EMPTY_STRING
+import util.EMPTY_STRING
 import model.Campo
 import model.CampoEvento
 import java.awt.Color
